@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f7f8f3" />
+    <meta name="description" content="Спокойный планировщик задач на каждый день." />
+    <title>День — планировщик задач</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="На главную"><span class="brand-mark">d<span>·</span></span><span>день за днём</span></a>
+        <div class="topbar-note"><span class="sync-dot"></span>Твои планы сохраняются автоматически</div>
+      </header>
+
+      <main>
+        <section class="intro">
+          <div>
+            <p class="eyebrow"><span class="eyebrow-line"></span>ТВОЁ ПРОСТРАНСТВО ДЛЯ ФОКУСА</p>
+            <h1>Хороший день<br /><span>начинается с ясности.</span></h1>
+            <p class="intro-copy">Собери планы на сегодня, выбери главное и двигайся в своём ритме.</p>
+          </div>
+          <div class="date-card">
+            <button class="date-arrow" id="prev-day" aria-label="Предыдущий день">←</button>
+            <div class="date-text"><span id="date-weekday"></span><strong id="date-full"></strong></div>
+            <button class="date-arrow" id="next-day" aria-label="Следующий день">→</button>
+            <button class="today-button" id="today-button">Сегодня</button>
+          </div>
+        </section>
+
+        <section class="overview" aria-label="Прогресс за день">
+          <div class="overview-main">
+            <div class="section-heading"><div><span class="section-kicker">ТВОЙ РИТМ</span><h2>Прогресс дня</h2></div><span class="live-label"><span></span>ОБНОВЛЯЕТСЯ СРАЗУ</span></div>
+            <div class="rings-row">
+              <div class="ring-wrap"><div class="progress-ring" id="progress-ring"><div class="ring-center"><strong id="progress-percent">0%</strong><span>выполнено</span></div></div></div>
+              <div class="progress-details"><p id="progress-message">Любой большой результат начинается с одного шага.</p><div class="progress-count"><strong id="progress-count">0 из 0</strong><span>задач завершено</span></div><div class="progress-track"><span id="progress-bar"></span></div><div class="mini-stats"><span><i class="stat-dot urgent-dot"></i><b id="urgent-count">0</b> срочных</span><span><i class="stat-dot done-dot"></i><b id="done-count">0</b> выполнено</span></div></div>
+            </div>
+          </div>
+          <aside class="quote-card"><span class="quote-mark">“</span><p>Не обязательно<br />успеть всё.</p><span>Достаточно сделать<br />следующий шаг.</span><div class="quote-sparkle">✳</div></aside>
+        </section>
+
+        <section class="tasks-section">
+          <div class="tasks-heading"><div><span class="section-kicker">МАЛЕНЬКИЕ ШАГИ, БОЛЬШОЙ ПУТЬ</span><h2>Мои задачи <span class="task-total" id="task-total">0</span></h2></div><div class="filter-wrap"><label for="task-filter">Показывать</label><select id="task-filter"><option value="all">Все задачи</option><option value="active">Активные</option><option value="completed">Выполненные</option></select></div></div>
+
+          <form class="add-task" id="task-form">
+            <span class="add-icon">＋</span><label class="visually-hidden" for="task-input">Название задачи</label><input id="task-input" type="text" placeholder="Что важно сделать сегодня?" maxlength="120" autocomplete="off" required /><label class="visually-hidden" for="task-priority">Приоритет задачи</label><select id="task-priority"><option value="urgent">Срочно</option><option value="secondary" selected>Второстепенно</option><option value="later">Отложено</option></select><button class="add-button" type="submit"><span>Добавить</span><b>＋</b></button>
+          </form>
+
+          <div class="priority-legend"><span class="legend-item"><i class="priority-dot urgent-dot"></i>Срочно</span><span class="legend-item"><i class="priority-dot secondary-dot"></i>Второстепенно</span><span class="legend-item"><i class="priority-dot later-dot"></i>Отложено на потом</span></div>
+
+          <div class="task-list" id="task-list" aria-live="polite"></div>
+          <div class="empty-state" id="empty-state"><div class="empty-illustration"><span>✳</span><i></i><b></b></div><h3 id="empty-title">В списке пока тихо</h3><p id="empty-copy">Добавь первую задачу — и освободи место для ясных мыслей.</p></div>
+          <div class="clear-completed-wrap"><button class="clear-completed" id="clear-completed">Убрать выполненные <span>↗</span></button></div>
+        </section>
+      </main>
+
+      <footer><span>Сделано для более спокойных и собранных дней.</span><span class="footer-flower">✳</span></footer>
+    </div>
+    <div class="toast" id="toast" role="status"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
